@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { API_URL } from '../config';
 
 const categories = ({ categories }) => {
+  console.log(categories);
   return (
     <div className="bg-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -14,15 +15,15 @@ const categories = ({ categories }) => {
           <div className="mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:gap-y-4">
             {categories.map((category) => (
               <div key={category.id} className="group relative">
-                <div className="relative w-full h-80 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-2 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+                <div className="relative w-full h-80 aspect-w-6 aspect-h-4 bg-white rounded-lg overflow-hidden group-hover:opacity-75 ">
                   <img
-                    src={category.image.formats.medium.url}
+                    src={category.bannerImage.formats.medium.url}
                     alt={category.name}
                     className="w-full h-full object-center object-cover"
                   />
                 </div>
                 <h3 className="mt-2 mb-6 text-sm md:text-lg font-bold text-gray-500">
-                  <Link href={`/category/${category.slug}`}>
+                  <Link href={`/categories/${category.slug}`}>
                     <a href={category.slug}>
                       <span className="absolute inset-0" />
                       {category.name}
