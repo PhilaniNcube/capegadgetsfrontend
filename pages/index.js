@@ -100,7 +100,7 @@ export default function Home({ categories, brands, products }) {
                     {categories.map((category) => {
                       return (
                         <li key={category.id}>
-                          <Link href={category.slug} passHref>
+                          <Link href={`/categories/${category.slug}`} passHref>
                             <a className="text-sm text-gray-500">
                               {category.name}
                             </a>
