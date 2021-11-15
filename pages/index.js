@@ -10,7 +10,7 @@ import { ChevronUpIcon } from '@heroicons/react/outline';
 import { API_URL } from '../config';
 import ProductGrid from '../components/products/ProductGrid';
 
-export default function Home({ categories, brands, products }) {
+export default function Home({ categories, products }) {
   return (
     <Fragment>
       <header className="bg-white shadow ">
