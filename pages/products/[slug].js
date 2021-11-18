@@ -9,7 +9,7 @@ const product = ({ product }) => {
         <div className="w-full">
           <div className="w-full rounded-lg overflow-hidden">
             <Image
-              src={product.mainImage.formats.medium.url}
+              src={product.mainImage.formats.small.url}
               width={800}
               height={800}
               alt={product.name}

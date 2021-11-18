@@ -1,18 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState, Fragment } from 'react';
+import { useState, useContext, Fragment } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { LockClosedIcon } from '@heroicons/react/solid';
+import AuthContext from '../../context/AuthContext'
 
 export default function LoginPage() {
   const router = useRouter();
+
+  const {register, error} = useContext(AuthContext)
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ email, password });
+    login({email, password})
   };
 
   return (

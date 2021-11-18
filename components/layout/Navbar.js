@@ -185,7 +185,7 @@ export default function Navbar() {
                             {section.items.map((item) => (
                               <li key={item.name} className="flow-root">
                                 <Link href={item.href}>
-                                  <a className="-m-2 p-2 block font-medium text-gray-500">
+                                  <a onClick={() => setOpen(false)} className="-m-2 p-2 block font-medium text-gray-500">
                                     {item.name}
                                   </a>
                                 </Link>
@@ -216,20 +216,24 @@ export default function Navbar() {
 
               <div className="border-t border-gray-200 py-6 px-4 space-y-6">
                 <div className="flow-root">
-                  <a
-                    href="#"
-                    className="-m-2 p-2 block font-medium text-gray-900"
-                  >
-                    Sign in
-                  </a>
+                  {user ? (
+                    <p onClick={() => logout()} className="-m-2 p-2 block font-medium text-red-700">
+                      Logout
+                    </p>
+                  ) : (
+                    <Link href="/account/login">
+                      <a className="-m-2 p-2 block font-medium text-gray-900">
+                        Sign in
+                      </a>
+                    </Link>
+                  )}
                 </div>
                 <div className="flow-root">
-                  <a
-                    href="#"
-                    className="-m-2 p-2 block font-medium text-gray-900"
-                  >
-                    Create account
-                  </a>
+                  <Link href="/account/register">
+                    <a className="-m-2 p-2 block font-medium text-gray-900">
+                      Create account
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -324,7 +328,7 @@ export default function Navbar() {
                                             />
                                           </div>
                                           <Link href={item.href}>
-                                            <a className="mt-6 block font-medium text-gray-900">
+                                            <a onClick={() => setOpen(false)} className="mt-6 block font-medium text-gray-900">
                                               <span
                                                 className="absolute z-10 inset-0"
                                                 aria-hidden="true"
@@ -359,11 +363,13 @@ export default function Navbar() {
                                               <li
                                                 key={item.name}
                                                 className="flex"
+                                                onClick={() => setOpen(false)}
                                               >
                                                 <Link href={item.href}>
                                                   <a
                                                     href={item.href}
                                                     className="hover:text-gray-800"
+                                                    onClick={() => setOpen(false)}
                                                   >
                                                     {item.name}
                                                   </a>
@@ -398,27 +404,31 @@ export default function Navbar() {
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  <a
-                    href="#"
-                    className="text-sm font-medium text-gray-700 hover:text-gray-800"
-                  >
-                    Sign in
-                  </a>
+                  {user ? (
+                    <p onClick={() => logout()} className="text-sm font-medium text-red-700 hover:text-gray-800">
+                      Logout
+                    </p>
+                  ) : (<Link href="/account/login">
+                    <a className="text-sm font-medium text-gray-700 hover:text-gray-800">
+                      Sign in
+                    </a>
+                  </Link>)}
                   <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                  <a
-                    href="#"
-                    className="text-sm font-medium text-gray-700 hover:text-gray-800"
-                  >
-                    Create account
-                  </a>
+                  <Link href="/account/register">
+                    <a className="text-sm font-medium text-gray-700 hover:text-gray-800">
+                      Create account
+                    </a>
+                  </Link>
                 </div>
 
                 {/* Search */}
                 <div className="flex lg:ml-6">
-                  <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
-                    <span className="sr-only">Search</span>
-                    <SearchIcon className="w-6 h-6" aria-hidden="true" />
-                  </a>
+                  <Link href="/search">
+                    <a className="p-2 text-gray-400 hover:text-gray-500">
+                      <span className="sr-only">Search</span>
+                      <SearchIcon className="w-6 h-6" aria-hidden="true" />
+                    </a>
+                  </Link>
                 </div>
 
                 {/* Cart */}
